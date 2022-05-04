@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "Node.js Restful CRUD API with Node.js, Express and MySQL",
   "main": "server.js",
+  "homepage": "https://hellodinhhoa.github.io/nodejs-express-mysql/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [
     "nodejs",
@@ -18,6 +21,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "gh-pages": "^3.2.3",
     "mysql": "^2.17.1"
   }
 }
