@@ -1,3 +1,6 @@
+const bodyParser = require('body-parser');
+const multer = require('multer');
+
 module.exports = app => {
   const tutorials = require("../controllers/tutorial.controller.js");
 
@@ -25,4 +28,5 @@ module.exports = app => {
   router.delete("/", tutorials.deleteAll);
 
   app.use('/api/tutorials', router);
+
 };
