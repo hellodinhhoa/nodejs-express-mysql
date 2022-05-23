@@ -14,7 +14,7 @@ const Columns = function(column) {
 //     query += ` WHERE title LIKE '%${title}%'`;
 //   }
 
-Columns.getAll = (kho, day, result) => {
+Columns.getAll = (kho, day, dayEnd, result) => {
   // Columns.getAll = (result) => {
   // let query = "SELECT * FROM `task-columns` as a LEFT JOIN tasks as b ON a.ma_column = b.trangthai WHERE deleted = 'N' ";
   let query = "SELECT * FROM `task-columns` as a LEFT JOIN tasks as b ON a.ma_column = b.trangthai WHERE deleted = 'N' ";
@@ -23,7 +23,10 @@ Columns.getAll = (kho, day, result) => {
         query += ` AND khohang = '${kho}'`;
   }
   if (day) {
-    query += ` AND DATE(createDate) = '${day}'`;
+    query += ` AND '${day}' <= DATE(createDate)`;
+  }
+  if (dayEnd) {
+    query += ` AND DATE(createDate) <= '${dayEnd}'`;
   }
   
   query += " ORDER by createDate DESC";

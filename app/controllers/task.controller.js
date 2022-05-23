@@ -165,6 +165,7 @@ exports.deleteAll = (req, res) => {
 exports.findAllColumns = (req, res) => {
   const kho = req.query.kho;
   const day = req.query.day;
+  const dayEnd = req.query.dayEnd;
 
   let columnNameDefine;
 
@@ -179,7 +180,7 @@ exports.findAllColumns = (req, res) => {
     }
   });
 
-  Columns.getAll(kho, day, (err, data) => {
+  Columns.getAll(kho, day, dayEnd, (err, data) => {
   // Columns.getAll((err, data) => {
     if (err)
       res.status(500).send({
