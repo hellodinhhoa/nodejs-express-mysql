@@ -21,7 +21,7 @@ exports.create = (req, res) => {
   const task = {
     title: req.body.title,
     noidung: req.body.noidung,
-    madonhang: req.body.madonhang,
+    // madonhang: req.body.madonhang,
     tenkh: req.body.tenkh,
     khohang: req.body.khohang,
     soluong: req.body.soluong,
@@ -32,6 +32,8 @@ exports.create = (req, res) => {
 
   task.hinhanh = req.app.get('filename');
   task.createDate = new Date();
+
+  console.log(task);
 
   // Save Task in the database
   Task.create(task, (err, data) => {
@@ -166,6 +168,7 @@ exports.findAllColumns = (req, res) => {
   const kho = req.query.kho;
   const day = req.query.day;
   const dayEnd = req.query.dayEnd;
+  const tenKH = req.query.tenKH;
 
   let columnNameDefine;
 
@@ -180,7 +183,7 @@ exports.findAllColumns = (req, res) => {
     }
   });
 
-  Columns.getAll(kho, day, dayEnd, (err, data) => {
+  Columns.getAll(kho, day, dayEnd, tenKH, (err, data) => {
   // Columns.getAll((err, data) => {
     if (err)
       res.status(500).send({
